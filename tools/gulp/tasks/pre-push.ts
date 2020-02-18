@@ -23,7 +23,7 @@ async function generatePrePushFile() {
     fs.createReadStream(prePushToolFile).pipe(
       fs.createWriteStream(prePushHookRoute + prePushFileName),
     );
-    // fs.chmodSync(prePushHookRoute + prePushFileName, '777');
+    fs.chmodSync(prePushHookRoute + prePushFileName, '755');
     util.log(util.colors.yellow('Pre-push file generated'));
   } catch (e) {
     util.log(util.colors.red('ERROR on create pre-push file'));
