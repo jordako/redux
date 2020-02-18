@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "angular.ng-template",
+    "johnpapa.angular2",
+    "msjsdiag.debugger-for-chrome",
+    "eamodio.gitlens",
+    "eg2.vscode-npm-script",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+	  "streetsidesoftware.code-spell-checker",
+	  "ecmel.vscode-html-css",
+  ],
+}

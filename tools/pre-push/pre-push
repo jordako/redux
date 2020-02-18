@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Command that runs your tests
+CMD="npm run lint"
+CMD2="npm run build:prod"
+
+# Check if we actually have commits to push
+commits=`git log @{u}..`
+if [ -z "$commits" ]; then
+    exit 0
+fi
+
+# Execute command
+$CMD
+RESULT=$?
+if [ $RESULT -ne 0 ]; then
+	echo "Pre-push Error: $CMD"
+	exit 1
+fi
+$CMD2
+RESULT=$?
+if [ $RESULT -ne 0 ]; then
+	echo "Pre-push Error: $CMD2"
+	exit 1
+fi
+exit 0
