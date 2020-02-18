@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Command that runs your tests
 CMD="npm run lint"
