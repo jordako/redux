@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgbDropdownModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+// Components
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 import { HeaderComponent } from './header.component';
 
@@ -14,8 +20,12 @@ export { HeaderComponent } from './header.component';
   imports: [
     CommonModule,
     TranslateModule,
-    NgbDropdownModule,
-    NgbCollapseModule,
+    FlexLayoutModule,
+    // Components
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   exports: [
     HeaderComponent,

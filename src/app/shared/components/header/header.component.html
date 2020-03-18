@@ -1,42 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <span class="navbar-brand mb-0 h1">{{ 'appName' | translate }}</span>
-  <button class="navbar-toggler" type="button" aria-controls="navbarMenu" [attr.aria-expanded]="!menuHidden" aria-label="Toggle navigation" (click)="toggleMenu()">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarMenu" [ngbCollapse]="menuHidden">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li #langDropdown="ngbDropdown" ngbDropdown class="nav-item" display="dynamic" placement="bottom-right">
-        <a ngbDropdownToggle href="javascript:void(0)" id="languageDropdown" class="nav-link" role="button" aria-haspopup="true" [attr.aria-expanded]="langDropdown.isOpen()">
-          {{ currentLanguage | translate }}
-        </a>
-        <div ngbDropdownMenu aria-labelledby="languageDropdown">
-          <button *ngFor="let language of languages" class="dropdown-item" [class.active]="language === currentLanguage" (click)="setLanguage(language)">
-            {{ language | translate }}            
-          </button>          
-        </div>
-      </li>
-      <li #userDropdown="ngbDropdown" ngbDropdown class="nav-item" display="dynamic" placement="bottom-right">
-        <a ngbDropdownToggle href="javascript:void(0)" id="userDropdown" class="nav-link" role="button" aria-haspopup="true" [attr.aria-expanded]="userDropdown.isOpen()">
-          {{ username }}
-        </a>
-        <div ngbDropdownMenu aria-labelledby="userDropdown">
-          <button class="dropdown-item" (click)="logout()">
-            {{ 'logout' | translate }}
-          </button>          
-        </div>
-      </li>
-    </ul>    
+<mat-toolbar class="mat-elevation-z6" color="primary">
+  <div fxHide.gt-sm fxLayoutAlign="start center">
+    <button class="menu-button" mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="title">{{title}}</span>
   </div>
-</nav>
+
+  <div fxHide.lt-md>
+    <span>{{ 'appName' | translate }}</span>
+    <button mat-button>Home</button>
+    <button mat-button>Link</button>
+    <button mat-button disabled>Disabled</button>
+  </div>
+
+  <span fxFlex></span>
+
+  <button mat-button [matMenuTriggerFor]="languageMenu">
+    <mat-icon>language</mat-icon>{{ currentLanguage | translate }}
+  </button>
+  <mat-menu #languageMenu="matMenu">
+    <button mat-menu-item *ngFor="let language of languages" (click)="setLanguage(language)">
+      {{ language | translate }}
+    </button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="userMenu">
+    <mat-icon>person</mat-icon>{{ username }}
+  </button>
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      {{ 'logout' | translate }}
+    </button>
+  </mat-menu>
+</mat-toolbar>

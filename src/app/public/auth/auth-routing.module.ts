@@ -9,9 +9,11 @@ import {
 const routes: Routes = [{
   path: 'login',
   component: LoginPage,
+  data: { title: 'login' },
 }, {
   path: 'register',
   component: RegisterPage,
+  data: { title: 'register' },
 }, {
   path: '',
   redirectTo: 'login',

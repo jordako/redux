@@ -1,0 +1,42 @@
+@import "src/theme/theme-variables";
+
+.app-private {
+  display: flex;
+  flex: 1;
+
+  .mat-sidenav,
+  .mat-drawer-backdrop {
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    position: absolute;
+  }
+
+  .mat-sidenav {
+    min-width: 270px;
+    max-width: 28%;
+  }
+
+  .mat-list {
+    padding-top: 0;
+  }
+  
+  .mat-list-item {
+    text-decoration: none;
+  
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+  }
+}
+
+@media ($mat-xsmall) {
+  .app-private {
+    .mat-sidenav,
+    .mat-drawer-backdrop {
+      top: 56px;
+    }
+  }
+}

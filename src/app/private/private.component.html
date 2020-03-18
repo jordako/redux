@@ -1,2 +1,23 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<div fxFlex>
+  <mat-sidenav-container fxFill>
+    <mat-sidenav #sidenav mode="over">
+      <nav>
+        <mat-list>
+          <mat-divider></mat-divider>
+          <a mat-list-item (click)="sidenav.close()">
+            Home
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item (click)="sidenav.close()">
+            Link
+          </a>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-header [sidenav]="sidenav"></app-header>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

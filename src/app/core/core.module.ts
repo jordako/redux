@@ -1,6 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { I18nService } from './i18n/i18n.service';
@@ -16,6 +17,7 @@ export { I18nService } from './i18n/i18n.service';
   imports: [
     CommonModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot(),
   ],
   providers: [

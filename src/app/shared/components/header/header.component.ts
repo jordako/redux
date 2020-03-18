@@ -1,7 +1,9 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
 
 import { I18nService } from 'src/app/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,7 @@ import { I18nService } from 'src/app/core';
   host: { class: 'app-header' },
 })
 export class HeaderComponent {
-  menuHidden = true;
+  @Input() sidenav: MatSidenav;
 
   get currentLanguage(): string {
     return this.i18nService.language;
@@ -27,14 +29,15 @@ export class HeaderComponent {
     return 'Username';
   }
 
+  get title(): string {
+    return this.titleService.getTitle();
+  }
+
   constructor(
     private router: Router,
     private i18nService: I18nService,
+    private titleService: Title,
   ) {}
-
-  toggleMenu() {
-    this.menuHidden = !this.menuHidden;
-  }
 
   setLanguage(language: string) {
     this.i18nService.language = language;
