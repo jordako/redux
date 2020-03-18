@@ -10,15 +10,15 @@ import {
 const routes: Routes = [{
   path: 'dashboard',
   component: DashboardPage,
-  data: { title: 'income-and-expenses.dashboard' },
+  data: { title: 'income-and-expenses.dashboard.title' },
 }, {
   path: 'list',
   component: ListPage,
-  data: { title: 'income-and-expenses.list' },
+  data: { title: 'income-and-expenses.list.title' },
 }, {
   path: 'new',
   component: NewPage,
-  data: { title: 'income-and-expenses.new' },
+  data: { title: 'income-and-expenses.new.title' },
 }, {
   path: '',
   redirectTo: 'dashboard',

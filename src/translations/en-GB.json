@@ -1,8 +1,13 @@
 {
   "appName": "Redux",
-  "user": "User",
-  "password": "Password",
-  "es-ES": "Spanish",
-  "en-GB": "English",
-  "logout": "Logout"
+  "es-ES": "Español",
+  "en-GB": "Inglés",
+  "auth.login.title": "Login",
+  "auth.register.title": "Register",
+  "auth.login.user": "User",
+  "auth.login.password": "Password",
+  "income-and-expenses.dashboard.title": "Dashboard",
+  "income-and-expenses.list.title": "List",
+  "income-and-expenses.new.title": "New",
+  "shared.header.logout": "Logout"
 }
