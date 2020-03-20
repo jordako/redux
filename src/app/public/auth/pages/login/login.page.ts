@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   host: { class: 'app-auth-login' },
 })
 export class LoginPage implements OnInit {
-  loginForm!: FormGroup;
+  loginForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,

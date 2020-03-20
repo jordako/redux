@@ -7,15 +7,27 @@
   <mat-card-content class="login-card__content">
     <form novalidate class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
       <mat-form-field class="login-form__field" [hideRequiredMarker]="true">
-        <input type="text" matInput formControlName="username" autocomplete="username"
-                [placeholder]="'auth.login.username' | translate" required/>
+        <input
+          matInput
+          required
+          type="text"
+          formControlName="username"
+          autocomplete="username"
+          [placeholder]="'auth.login.username' | translate"
+        />
         <mat-error *ngIf="loginForm.controls.username.invalid && loginForm.controls.username.touched">
           {{'auth.login.username-required' | translate}}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="login-form__field" [hideRequiredMarker]="true">
-        <input type="password" matInput formControlName="password" autocomplete="current-password"
-                [placeholder]="'auth.login.password' | translate" required/>
+        <input 
+          matInput
+          required
+          type="password"
+          formControlName="password"
+          autocomplete="current-password"
+          [placeholder]="'auth.login.password' | translate" 
+        />
         <mat-error *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
           {{'auth.login.password-required' | translate}}
         </mat-error>
