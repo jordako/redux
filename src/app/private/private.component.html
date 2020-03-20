@@ -1,21 +1,21 @@
 <div fxFlex>
   <mat-sidenav-container fxFill>
-    <mat-sidenav #sidenav mode="over">
+    <mat-sidenav #sidenav mode="over" class="private-sidenav">
       <nav>
-        <mat-list>
+        <mat-list class="private-sidenav__list">
           <mat-divider></mat-divider>
-          <a mat-list-item (click)="sidenav.close()">
+          <a mat-list-item (click)="sidenav.close()" class="private-sidenav__list-item">
             Home
           </a>
           <mat-divider></mat-divider>
-          <a mat-list-item (click)="sidenav.close()">
+          <a mat-list-item (click)="sidenav.close()" class="private-sidenav__list-item">
             Link
           </a>
           <mat-divider></mat-divider>
         </mat-list>
       </nav>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="private-sidenav-content">
       <app-header [sidenav]="sidenav"></app-header>
       <router-outlet></router-outlet>
     </mat-sidenav-content>

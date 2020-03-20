@@ -1,10 +1,10 @@
 @import "src/theme/theme-variables";
 
 .app-private {
-  display: flex;
-  flex: 1;
+  display: block;
+  height: 100%;
 
-  .mat-sidenav,
+  .private-sidenav,
   .mat-drawer-backdrop {
     top: 64px;
     bottom: 0;
@@ -14,21 +14,27 @@
     position: absolute;
   }
 
-  .mat-sidenav {
+  .private-sidenav {
     min-width: 270px;
     max-width: 28%;
+
+    &__list {
+      padding-top: 0;
+    }
+
+    &__list-item {
+      text-decoration: none;
+    
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+    }
   }
 
-  .mat-list {
-    padding-top: 0;
-  }
-  
-  .mat-list-item {
-    text-decoration: none;
-  
-    &:hover {
-      background: rgba(0, 0, 0, 0.05);
-    }
+  .private-sidenav-content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
   }
 }
 
