@@ -8,4 +8,4 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
   encapsulation: ViewEncapsulation.None,
   host: { class: 'app-private' },
 })
-export class PrivateComponent { }
+export class PrivateComponent {}

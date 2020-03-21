@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { PrivateRoutingModule } from './private-routing.module';
 import { PrivateComponent } from './private.component';
@@ -16,6 +17,7 @@ import { MatListModule } from '@angular/material/list';
   imports: [
     PrivateRoutingModule,
     FlexLayoutModule,
+    TranslateModule,
     // Components
     HeaderModule,
     MatSidenavModule,

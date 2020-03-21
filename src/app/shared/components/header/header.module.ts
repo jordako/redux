@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -21,6 +22,7 @@ export { HeaderComponent } from './header.component';
     CommonModule,
     TranslateModule,
     FlexLayoutModule,
+    RouterModule,
     // Components
     MatToolbarModule,
     MatButtonModule,

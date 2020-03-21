@@ -4,12 +4,16 @@
       <nav>
         <mat-list class="private-sidenav__list">
           <mat-divider></mat-divider>
-          <a mat-list-item (click)="sidenav.close()" class="private-sidenav__list-item">
-            Home
+          <a mat-list-item class="private-sidenav__list-item" routerLink="/income-and-expenses/dashboard" routerLinkActive="active" (click)="sidenav.close()">
+            {{'income-and-expenses.dashboard.title' | translate}}
           </a>
           <mat-divider></mat-divider>
-          <a mat-list-item (click)="sidenav.close()" class="private-sidenav__list-item">
-            Link
+          <a mat-list-item class="private-sidenav__list-item" routerLink="/income-and-expenses/list" routerLinkActive="active" (click)="sidenav.close()">
+            {{'income-and-expenses.list.title' | translate}}
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item class="private-sidenav__list-item" routerLink="/income-and-expenses/new" routerLinkActive="active" (click)="sidenav.close()">
+            {{'income-and-expenses.new.title' | translate}}
           </a>
           <mat-divider></mat-divider>
         </mat-list>

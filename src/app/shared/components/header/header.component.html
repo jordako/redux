@@ -8,9 +8,15 @@
 
   <div fxHide.lt-md>
     <span>{{ 'appName' | translate }}</span>
-    <button mat-button>Home</button>
-    <button mat-button>Link</button>
-    <button mat-button disabled>Disabled</button>
+    <button mat-button routerLink="/income-and-expenses/dashboard" routerLinkActive="active">
+      {{'income-and-expenses.dashboard.title' | translate}}
+    </button>
+    <button mat-button routerLink="/income-and-expenses/list" routerLinkActive="active">
+      {{'income-and-expenses.list.title' | translate}}
+    </button>
+    <button mat-button routerLink="/income-and-expenses/new" routerLinkActive="active">
+      {{'income-and-expenses.new.title' | translate}}
+    </button>
   </div>
 
   <span fxFlex></span>
