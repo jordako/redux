@@ -5,8 +5,8 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content class="login-card__content">
-    <form novalidate class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <mat-form-field class="login-form__field" [hideRequiredMarker]="true">
+    <form novalidate class="form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <mat-form-field class="form__field" [hideRequiredMarker]="true">
         <input
           matInput
           required
@@ -19,7 +19,7 @@
           {{'form.error.required' | translate}}
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="login-form__field" [hideRequiredMarker]="true">
+      <mat-form-field class="form__field" [hideRequiredMarker]="true">
         <input 
           matInput
           required
@@ -32,7 +32,7 @@
           {{'form.error.required' | translate}}
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button class="login-form__button" color="primary" type="submit" [disabled]="loginForm.invalid">
+      <button mat-raised-button class="form__button" color="primary" type="submit" [disabled]="loginForm.invalid">
         {{'auth.login.login' | translate}}
       </button>
     </form>

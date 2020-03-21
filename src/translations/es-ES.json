@@ -18,7 +18,16 @@
   "income-and-expenses.dashboard.title": "Dashboard",
   "income-and-expenses.list.title": "Listado",
   "income-and-expenses.new.title": "Nuevo",
+  "income-and-expenses.new.add-income-and-expenses": "Añadir ingreso/gasto",
+  "income-and-expenses.new.description": "Descripción",
+  "income-and-expenses.new.amount": "Cantidad",
+  "income-and-expenses.new.type": "Tipo",
+  "income-and-expenses.new.income": "Ingreso",
+  "income-and-expenses.new.expense": "Gasto",
+  "income-and-expenses.new.add": "Añadir",
+  "income-and-expenses.new.cancel": "Cancelar",
   "form.error.required": "Campo obligatorio",
   "form.error.email": "Formato incorrecto",
+  "form.error.min": "Valor mínimo {{value}}",
   "shared.header.logout": "Salir"
 }

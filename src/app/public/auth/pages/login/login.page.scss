@@ -5,7 +5,6 @@
   height: 100%;
   padding: 1rem;
   justify-content: center;
-  background-color: #f5f5f5;
 
   .login-card {
     width: 500px;
@@ -14,23 +13,6 @@
     &__header {
       justify-content: center;
       margin-bottom: 1rem;
-    }
-  }
-
-  .login-form {
-    &__field,
-    &__button {
-      display: block;
-      width: 100%;
-    }
-
-    &__field {
-      margin-bottom: 0.5rem;
-    }
-
-    &__button {
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
     }
   }
 }

@@ -5,8 +5,8 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content class="register-card__content">
-    <form novalidate class="register-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
-      <mat-form-field class="register-form__field" [hideRequiredMarker]="true">
+    <form novalidate class="form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <mat-form-field class="form__field" [hideRequiredMarker]="true">
         <input
           matInput
           required
@@ -18,7 +18,7 @@
           {{'form.error.required' | translate}}
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="register-form__field" [hideRequiredMarker]="true">
+      <mat-form-field class="form__field" [hideRequiredMarker]="true">
         <input
           matInput
           required
@@ -31,7 +31,7 @@
           <div *ngIf="registerForm.controls.email.errors.email">{{'form.error.email' | translate}}</div>
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="register-form__field" [hideRequiredMarker]="true">
+      <mat-form-field class="form__field" [hideRequiredMarker]="true">
         <input 
           matInput
           required
@@ -44,7 +44,7 @@
           {{'form.error.required' | translate}}
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button class="register-form__button" color="primary" type="submit" [disabled]="registerForm.invalid">
+      <button mat-raised-button class="form__button" color="primary" type="submit" [disabled]="registerForm.invalid">
         {{'auth.register.register' | translate}}
       </button>
     </form>

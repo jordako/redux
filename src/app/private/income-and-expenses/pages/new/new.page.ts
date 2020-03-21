@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-incoming-and-expenses-new',
@@ -8,4 +9,26 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
   encapsulation: ViewEncapsulation.None,
   host: { class: 'app-incoming-and-expenses-new' },
 })
-export class NewPage { }
+export class NewPage implements OnInit {
+  newForm: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+  ) {}
+
+  ngOnInit() {
+    this.createForm();
+  }
+
+  onAdd() {
+    console.log(this.newForm.value);
+  }
+
+  private createForm() {
+    this.newForm = this.formBuilder.group({
+      description: ['', Validators.required],
+      amount: [0, Validators.min(0)],
+      type: 'income',
+    });
+  }
+}

@@ -1,1 +1,43 @@
-<h1>New</h1>
+<form class="form" novalidate [formGroup]="newForm" (ngSubmit)="onAdd()">
+  <mat-card class="new-card">
+    <mat-card-header>
+      <mat-card-title>{{'income-and-expenses.new.add-income-and-expenses' | translate}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="form__field">
+        <input
+          matInput
+          type="text"
+          formControlName="description"
+          [placeholder]="'income-and-expenses.new.description' | translate"
+        />
+        <mat-error *ngIf="newForm.controls.description.invalid && newForm.controls.description.touched">
+          {{'form.error.required' | translate}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form__field">
+        <input
+          matInput
+          type="number"
+          formControlName="amount"
+          [placeholder]="'income-and-expenses.new.amount' | translate"
+        />
+        <mat-error *ngIf="newForm.controls.amount.invalid && newForm.controls.amount.touched">
+          <div *ngIf="newForm.controls.amount.errors.required">{{'form.error.required' | translate}}</div>
+          <div *ngIf="newForm.controls.amount.errors.min">{{'form.error.min' | translate: {value:'0'} }}</div>
+        </mat-error>
+      </mat-form-field>
+
+      <label id="incomeAndExpensesType">{{'income-and-expenses.new.type' | translate}}</label>
+      <mat-radio-group aria-labelledby="incomeAndExpensesType" formControlName="type">
+        <mat-radio-button value="income">{{'income-and-expenses.new.income' | translate}}</mat-radio-button>
+        <mat-radio-button value="expense">{{'income-and-expenses.new.expense' | translate}}</mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="newForm.invalid">{{'income-and-expenses.new.add' | translate}}</button>
+      <button mat-button>{{'income-and-expenses.new.cancel' | translate}}</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

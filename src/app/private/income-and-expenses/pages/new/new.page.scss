@@ -1,3 +1,8 @@
 .app-incoming-and-expenses-new {
   display: block;
+  padding: 1rem;
+
+  .new-card {
+    max-width: 500px;
+  }
 }

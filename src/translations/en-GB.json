@@ -18,7 +18,16 @@
   "income-and-expenses.dashboard.title": "Dashboard",
   "income-and-expenses.list.title": "List",
   "income-and-expenses.new.title": "New",
+  "income-and-expenses.new.add-income-and-expenses": "Add income/expenses",
+  "income-and-expenses.new.description": "Description",
+  "income-and-expenses.new.amount": "Amount",
+  "income-and-expenses.new.type": "Type",
+  "income-and-expenses.new.income": "Income",
+  "income-and-expenses.new.expense": "Expense",
+  "income-and-expenses.new.add": "Add",
+  "income-and-expenses.new.cancel": "Cancel",
   "form.error.required": "Required field",
   "form.error.email": "Incorrect format",
+  "form.error.min": "Min value {{value}}",
   "shared.header.logout": "Logout"
 }
