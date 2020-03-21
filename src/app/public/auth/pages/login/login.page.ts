@@ -23,8 +23,8 @@ export class LoginPage implements OnInit {
     this.createForm();
   }
 
-  login() {
-    this.router.navigate([ this.route.snapshot.queryParams.redirect || '/'], { replaceUrl: true });
+  onLogin() {
+    this.router.navigate([this.route.snapshot.queryParams.redirect || '/'], { replaceUrl: true });
   }
 
   private createForm() {

@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-auth-register',
@@ -8,4 +9,26 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
   encapsulation: ViewEncapsulation.None,
   host: { class: 'app-auth-register' },
 })
-export class RegisterPage { }
+export class RegisterPage implements OnInit {
+  registerForm: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+  ) { }
+
+  ngOnInit() {
+    this.createForm();
+  }
+
+  onRegister() {
+    console.log(this.registerForm.value);
+  }
+
+  private createForm() {
+    this.registerForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
+}

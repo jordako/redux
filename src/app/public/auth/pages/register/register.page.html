@@ -1,1 +1,53 @@
-<h1>Register</h1>
+<mat-card class="register-card">
+  <mat-card-header class="register-card__header">
+    <mat-card-title>
+      {{ 'appName' | translate }} | {{'auth.register.title' | translate}}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="register-card__content">
+    <form novalidate class="register-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <mat-form-field class="register-form__field" [hideRequiredMarker]="true">
+        <input
+          matInput
+          required
+          type="text"
+          formControlName="name"
+          [placeholder]="'auth.register.name' | translate"
+        />
+        <mat-error *ngIf="registerForm.controls.name.invalid && registerForm.controls.name.touched">
+          {{'form.error.required' | translate}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="register-form__field" [hideRequiredMarker]="true">
+        <input
+          matInput
+          required
+          type="text"
+          formControlName="email"
+          [placeholder]="'auth.register.email' | translate"
+        />
+        <mat-error *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched">
+          <div *ngIf="registerForm.controls.email.errors.required">{{'form.error.required' | translate}}</div>
+          <div *ngIf="registerForm.controls.email.errors.email">{{'form.error.email' | translate}}</div>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="register-form__field" [hideRequiredMarker]="true">
+        <input 
+          matInput
+          required
+          type="password"
+          formControlName="password"
+          autocomplete="current-password"
+          [placeholder]="'auth.register.password' | translate" 
+        />
+        <mat-error *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched">
+          {{'form.error.required' | translate}}
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="register-form__button" color="primary" type="submit" [disabled]="registerForm.invalid">
+        {{'auth.register.register' | translate}}
+      </button>
+    </form>
+    <p>{{'auth.register.already-register' | translate}} <a href="#" routerLink="/auth/login">{{'auth.register.login' | translate}}</a></p>
+  </mat-card-content>
+</mat-card>

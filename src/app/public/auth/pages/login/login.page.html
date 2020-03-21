@@ -5,7 +5,7 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content class="login-card__content">
-    <form novalidate class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <form novalidate class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <mat-form-field class="login-form__field" [hideRequiredMarker]="true">
         <input
           matInput
@@ -16,7 +16,7 @@
           [placeholder]="'auth.login.username' | translate"
         />
         <mat-error *ngIf="loginForm.controls.username.invalid && loginForm.controls.username.touched">
-          {{'auth.login.username-required' | translate}}
+          {{'form.error.required' | translate}}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="login-form__field" [hideRequiredMarker]="true">
@@ -29,7 +29,7 @@
           [placeholder]="'auth.login.password' | translate" 
         />
         <mat-error *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
-          {{'auth.login.password-required' | translate}}
+          {{'form.error.required' | translate}}
         </mat-error>
       </mat-form-field>
       <button mat-raised-button class="login-form__button" color="primary" type="submit" [disabled]="loginForm.invalid">
