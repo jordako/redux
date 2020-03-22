@@ -3,7 +3,17 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+// Environment
+import { environment } from '../../environments/environment';
+
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+// Services
 import { I18nService } from './i18n/i18n.service';
 
 // Interceptors
@@ -19,6 +29,10 @@ export { I18nService } from './i18n/i18n.service';
     HttpClientModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    MatSnackBarModule,
   ],
   providers: [
     I18nService,

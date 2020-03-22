@@ -16,7 +16,8 @@
           [placeholder]="'auth.login.username' | translate"
         />
         <mat-error *ngIf="loginForm.controls.username.invalid && loginForm.controls.username.touched">
-          {{'form.error.required' | translate}}
+          <div *ngIf="loginForm.controls.username.errors.required">{{'form.error.required' | translate}}</div>
+          <div *ngIf="loginForm.controls.username.errors.email">{{'form.error.email' | translate}}</div>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="form__field" [hideRequiredMarker]="true">

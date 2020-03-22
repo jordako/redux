@@ -8,6 +8,7 @@
   "auth.login.login": "Entrar",
   "auth.login.not-register-text": "¿No estás registrado?",
   "auth.login.sign-up": "Registrate",
+  "auth.login.close": "Cerrar",
   "auth.register.title": "Registro",
   "auth.register.name": "Nombre",
   "auth.register.email": "Correo electrónico",

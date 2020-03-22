@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Title } from '@angular/platform-browser';
 
 import { I18nService } from 'src/app/core';
-import { Title } from '@angular/platform-browser';
+import { AuthService } from '../../../public/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -34,9 +34,9 @@ export class HeaderComponent {
   }
 
   constructor(
-    private router: Router,
     private i18nService: I18nService,
     private titleService: Title,
+    public authService: AuthService,
   ) {}
 
   setLanguage(language: string) {
@@ -44,7 +44,6 @@ export class HeaderComponent {
   }
 
   logout() {
-    // TODO
-    this.router.navigate(['/auth/login']);
+    this.authService.logout();
   }
 }

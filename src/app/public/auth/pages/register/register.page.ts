@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { AuthService } from '../../services/auth.service';
+
 @Component({
   selector: 'app-auth-register',
   templateUrl: './register.page.html',
@@ -14,6 +16,7 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -21,7 +24,8 @@ export class RegisterPage implements OnInit {
   }
 
   onRegister() {
-    console.log(this.registerForm.value);
+    const data = this.registerForm.value;
+    this.authService.createUser(data.name, data.email, data.password);
   }
 
   private createForm() {

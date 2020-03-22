@@ -8,6 +8,7 @@
   "auth.login.login": "Login",
   "auth.login.not-register-text": "Are you not registered?",
   "auth.login.sign-up": "Sign up",
+  "auth.login.close": "Close",
   "auth.register.title": "Register",
   "auth.register.name": "Name",
   "auth.register.email": "E-mail",

@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-auth-login',
@@ -15,8 +16,7 @@ export class LoginPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute,
+    public authService: AuthService,
   ) {}
 
   ngOnInit() {
@@ -24,12 +24,13 @@ export class LoginPage implements OnInit {
   }
 
   onLogin() {
-    this.router.navigate([this.route.snapshot.queryParams.redirect || '/'], { replaceUrl: true });
+    const data = this.loginForm.value;
+    this.authService.login(data.username, data.password);
   }
 
   private createForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
