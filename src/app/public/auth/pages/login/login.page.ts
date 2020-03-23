@@ -1,5 +1,8 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -15,8 +18,12 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
     public authService: AuthService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private translate: TranslateService,
   ) {}
 
   ngOnInit() {
@@ -24,13 +31,25 @@ export class LoginPage implements OnInit {
   }
 
   onLogin() {
-    const data = this.loginForm.value;
-    this.authService.login(data.username, data.password);
+    // TODO start loading
+
+    const { email, password } = this.loginForm.value;
+
+    this.authService.login(email, password)
+      .then(() => {
+        // TODO stop loading
+        this.router.navigate(['/']);
+      })
+      .catch(error => {
+        this.snackBar.open(error.message, this.translate.instant('auth.login.close'), {
+          duration: 5000,
+        });
+      });
   }
 
   private createForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }

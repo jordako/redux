@@ -1,5 +1,8 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -15,8 +18,11 @@ export class RegisterPage implements OnInit {
   registerForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
     public authService: AuthService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private translate: TranslateService,
   ) { }
 
   ngOnInit() {
@@ -24,8 +30,20 @@ export class RegisterPage implements OnInit {
   }
 
   onRegister() {
-    const data = this.registerForm.value;
-    this.authService.createUser(data.name, data.email, data.password);
+    // TODO start loading
+
+    const { name, email, password } = this.registerForm.value;
+
+    this.authService.createUser(name, email, password)
+      .then(() => {
+        // TODO stop loading
+        this.router.navigate(['/']);
+      })
+      .catch(error => {
+        this.snackBar.open(error.message, this.translate.instant('auth.login.close'), {
+          duration: 5000,
+        });
+      });
   }
 
   private createForm() {
