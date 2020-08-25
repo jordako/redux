@@ -1,10 +1,11 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Title } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 import { I18nService } from 'src/app/core';
 import { AuthService } from '../../../public/auth/services/auth.service';
+import { HeaderService } from './header.service';
 
 @Component({
   selector: 'app-header',
@@ -30,14 +31,14 @@ export class HeaderComponent {
     return 'Username';
   }
 
-  get title(): string {
-    return this.titleService.getTitle();
+  get title$(): Observable<string> {
+    return this.headerService.title$;
   }
 
   constructor(
     public authService: AuthService,
     private i18nService: I18nService,
-    private titleService: Title,
+    private headerService: HeaderService,
     private router: Router,
   ) {}
 

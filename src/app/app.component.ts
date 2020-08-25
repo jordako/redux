@@ -7,6 +7,7 @@ import { filter, map, switchMap } from 'rxjs/operators';
 
 import { I18nService } from './core/i18n/i18n.service';
 import { environment } from '../environments/environment';
+import { HeaderService } from './shared/components';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
     private translateService: TranslateService,
+    private headerService: HeaderService,
   ) {}
 
   ngOnInit() {
@@ -50,6 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
         const title = event.title;
         if (title) {
           this.titleService.setTitle(this.translateService.instant(title));
+          this.headerService.setTitle(this.translateService.instant(title));
         }
       });
   }
