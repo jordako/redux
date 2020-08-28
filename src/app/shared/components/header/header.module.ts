@@ -14,7 +14,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './header.component';
 
 export { HeaderComponent } from './header.component';
-export { HeaderService } from './header.service';
 
 @NgModule({
   declarations: [

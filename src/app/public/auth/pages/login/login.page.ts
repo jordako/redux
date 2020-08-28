@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -21,7 +21,6 @@ export class LoginPage implements OnInit {
     public authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private translate: TranslateService,
   ) {}

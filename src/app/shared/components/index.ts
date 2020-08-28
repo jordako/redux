@@ -1,1 +1,1 @@
-export { HeaderModule, HeaderComponent, HeaderService } from './header/header.module';
+export { HeaderModule, HeaderComponent } from './header/header.module';
