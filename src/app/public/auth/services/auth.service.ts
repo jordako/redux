@@ -13,14 +13,14 @@ export class AuthService {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private afDB: AngularFirestore,
+    private firestore: AngularFirestore,
   ) {}
 
   createUser(name: string, email: string, password: string): Promise<void | firebase.auth.UserCredential> {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(({ user }) => {
         const newUser = new UserModel( user.uid, user.email, name );
-        return this.afDB.doc(`${ user.uid }/user`).set({ ...newUser });
+        return this.firestore.doc(`${ user.uid }/user`).set({ ...newUser });
       });
   }
 

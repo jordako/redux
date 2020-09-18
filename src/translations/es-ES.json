@@ -3,7 +3,7 @@
   "es-ES": "Español",
   "en-GB": "Inglés",
   "auth.login.title": "Ingreso",
-  "auth.login.username": "Nombre de usuario",
+  "auth.login.username": "Correo electrónico",
   "auth.login.password": "Contraseña",
   "auth.login.login": "Entrar",
   "auth.login.not-register-text": "¿No estás registrado?",

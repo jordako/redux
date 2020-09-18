@@ -30,6 +30,8 @@ export class RegisterPage implements OnInit {
   }
 
   onRegister() {
+    if (this.registerForm.invalid) { return; }
+
     // TODO start loading
 
     const { name, email, password } = this.registerForm.value;

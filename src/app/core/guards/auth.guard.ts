@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanLoad, Router } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { take, tap } from 'rxjs/operators';
 
 import { AuthService } from 'src/app/public/auth/services/auth.service';
 
@@ -14,29 +15,26 @@ export class AuthGuard implements CanActivate, CanLoad {
     private router: Router,
   ) {}
 
-  canActivate() {
-    const isAuthSubs = this.authService.isAuth();
-
-    isAuthSubs.subscribe(isAuth => {
-      if (!isAuth) {
-        this.router.navigate(['/auth/login']);
-      }
-    });
-
-    return isAuthSubs;
+  canActivate(): Observable<boolean> {
+    return this.authService.isAuth()
+      .pipe(
+        tap((isAuth: boolean) => {
+          if (!isAuth) {
+            this.router.navigate(['/auth/login']);
+          }
+        }),
+      );
   }
 
-  canLoad() {
-    const isAuthSubs = this.authService.isAuth().pipe(
-      take(1),
-    );
-
-    isAuthSubs.subscribe(isAuth => {
-      if (!isAuth) {
-        this.router.navigate(['/auth/login']);
-      }
-    });
-
-    return isAuthSubs;
+  canLoad(): Observable<boolean> {
+    return this.authService.isAuth()
+      .pipe(
+        take(1),
+        tap((isAuth: boolean) => {
+          if (!isAuth) {
+            this.router.navigate(['/auth/login']);
+          }
+        }),
+      );
   }
 }

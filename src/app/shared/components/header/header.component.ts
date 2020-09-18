@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input, OnInit, O
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, SubscriptionLike } from 'rxjs';
 
@@ -41,9 +42,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public authService: AuthService,
     private i18nService: I18nService,
     private router: Router,
-    private translateService: TranslateService,
+    private translate: TranslateService,
     private appService: AppService,
     private titleService: Title,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit() {
@@ -55,14 +57,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   setTitle() {
-    this.titleSource.next(this.translateService.instant(this.titleService.getTitle()));
+    this.titleSource.next(this.translate.instant(this.titleService.getTitle()));
 
     // Change header title
     this.changePageSubscription = this.appService.onChangePage()
       .subscribe(data => {
         const title = data.title;
         if (title) {
-          this.titleSource.next(this.translateService.instant(title));
+          this.titleSource.next(this.translate.instant(title));
         }
       });
   }
@@ -72,8 +74,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.authService.logout().then( () => {
-      this.router.navigate(['/auth/login']);
-    });
+    // TODO start loading
+    this.authService.logout()
+      .then( () => {
+        // TODO stop loading
+        this.router.navigate(['/auth/login']);
+      })
+      .catch(error => {
+        this.snackBar.open(error.message, this.translate.instant('auth.login.close'), {
+          duration: 5000,
+        });
+      });
   }
 }

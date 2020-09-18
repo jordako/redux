@@ -30,6 +30,8 @@ export class LoginPage implements OnInit {
   }
 
   onLogin() {
+    if (this.loginForm.invalid) { return; }
+
     // TODO start loading
 
     const { email, password } = this.loginForm.value;

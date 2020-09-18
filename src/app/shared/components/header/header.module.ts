@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HeaderComponent } from './header.component';
 
@@ -30,6 +31,7 @@ export { HeaderComponent } from './header.component';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
   exports: [
     HeaderComponent,
