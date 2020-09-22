@@ -7,6 +7,11 @@ import { TranslateModule } from '@ngx-translate/core';
 // Environment
 import { environment } from '../../environments/environment';
 
+// Ngrx
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { appReducers } from '../app.reducer';
+
 // Firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -20,6 +25,7 @@ import { ApiPrefixInterceptor } from './http/api-prefix.interceptor';
 import { ErrorHandlerInterceptor } from './http/error-handler.interceptor';
 import { HttpTokenInterceptor } from './http/http.token.interceptor';
 
+
 export { I18nService } from './i18n/i18n.service';
 
 @NgModule({
@@ -31,6 +37,11 @@ export { I18nService } from './i18n/i18n.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    StoreModule.forRoot(appReducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains las 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   providers: [
     I18nService,

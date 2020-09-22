@@ -4,4 +4,8 @@ export class UserModel {
     public email: string,
     public name: string,
   ) {}
+
+  static fromFirestore( { email, uid, name } ) {
+    return new UserModel(uid, email, name);
+  }
 }

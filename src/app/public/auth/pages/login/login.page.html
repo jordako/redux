@@ -1,7 +1,7 @@
 <mat-card class="login-card">
   <mat-card-header class="login-card__header">
     <mat-card-title>
-      {{ 'appName' | translate }} | {{'auth.login.title' | translate}}
+      {{ 'appName' | translate }} | {{ 'auth.login.title' | translate }}
     </mat-card-title>
   </mat-card-header>
   <mat-card-content class="login-card__content">
@@ -16,8 +16,8 @@
           [placeholder]="'auth.login.username' | translate"
         />
         <mat-error *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
-          <div *ngIf="loginForm.controls.email.errors.required">{{'form.error.required' | translate}}</div>
-          <div *ngIf="loginForm.controls.email.errors.email">{{'form.error.email' | translate}}</div>
+          <div *ngIf="loginForm.controls.email.errors.required">{{ 'form.error.required' | translate }}</div>
+          <div *ngIf="loginForm.controls.email.errors.email">{{ 'form.error.email' | translate }}</div>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="form__field" [hideRequiredMarker]="true">
@@ -33,10 +33,10 @@
           {{'form.error.required' | translate}}
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button class="form__button" color="primary" type="submit" [disabled]="loginForm.invalid">
-        {{'auth.login.login' | translate}}
+      <button mat-raised-button class="form__button" color="primary" type="submit" [disabled]="loginForm.invalid || (isLoading | async)">
+        {{ ((isLoading | async) ? 'generic.actions.loading' : 'auth.login.login') | translate }}
       </button>
     </form>
-    <p>{{'auth.login.not-register-text' | translate}} <a href="#" routerLink="/auth/register">{{'auth.login.sign-up' | translate}}</a></p>
+    <p>{{ 'auth.login.not-register-text' | translate }} <a href="#" routerLink="/auth/register">{{ 'auth.login.sign-up' | translate }}</a></p>
   </mat-card-content>
 </mat-card>

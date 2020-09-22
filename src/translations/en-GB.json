@@ -2,6 +2,7 @@
   "appName": "Redux",
   "es-ES": "Español",
   "en-GB": "Inglés",
+  "generic.actions.loading": "Loading",
   "auth.login.title": "Login",
   "auth.login.username": "E-mail",
   "auth.login.password": "Password",

@@ -3,9 +3,10 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { SubscriptionLike } from 'rxjs';
 
+import { environment } from '../environments/environment';
+
 import { AppService } from './app.service';
 import { I18nService } from './core/i18n/i18n.service';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-     // Setup translations
+    // Setup translations
     this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);
 
     // Change page title
