@@ -1,3 +1,39 @@
 .app-incoming-and-expenses-list {
   display: block;
+  padding: 1rem;
+
+  .list {
+    &-card {
+      max-width: 1200px;
+    }
+    &-table {
+      width: 100%;
+    }
+  }
+
+  .mat-column {
+    &-amount {
+      text-align: right;
+      padding-right: 24px;
+      .mat-sort-header-container {
+        justify-content: flex-end;
+      }
+    }
+    &-type {
+      text-align: center;
+      .mat-sort-header-container {
+        justify-content: center;
+      }
+
+      &--income {
+        color: #28a745;
+      }
+      &--expense {
+        color: #dc3545;
+      }
+    }
+    &-actions {
+      text-align: right;
+    }
+  }
 }

@@ -2,7 +2,9 @@
   display: block;
   padding: 1rem;
 
-  .new-card {
-    max-width: 500px;
+  .new {
+    &-card {
+      max-width: 500px;
+    }
   }
 }

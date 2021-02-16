@@ -25,7 +25,6 @@ import { ApiPrefixInterceptor } from './http/api-prefix.interceptor';
 import { ErrorHandlerInterceptor } from './http/error-handler.interceptor';
 import { HttpTokenInterceptor } from './http/http.token.interceptor';
 
-
 export { I18nService } from './i18n/i18n.service';
 
 @NgModule({

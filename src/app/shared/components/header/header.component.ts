@@ -4,11 +4,14 @@ import { Title } from '@angular/platform-browser';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, SubscriptionLike } from 'rxjs';
+import { BehaviorSubject, Observable, SubscriptionLike } from 'rxjs';
 
 import { I18nService } from 'src/app/core';
 import { AuthService } from '../../../public/auth/services/auth.service';
 import { AppService } from '../../../app.service';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -33,9 +36,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     return this.i18nService.supportedLanguages;
   }
 
-  get username(): string {
-    // TODO
-    return 'Username';
+  get username(): Observable<string> {
+    return this.store.select('user').pipe(
+      filter(({ user }) => user != null),
+      map(({ user }) => user.name),
+    );
   }
 
   constructor(
@@ -46,6 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private appService: AppService,
     private titleService: Title,
     private snackBar: MatSnackBar,
+    private store: Store<AppState>,
   ) {}
 
   ngOnInit() {

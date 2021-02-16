@@ -1,7 +1,7 @@
 <form class="form" novalidate [formGroup]="newForm" (ngSubmit)="onAdd()">
   <mat-card class="new-card">
     <mat-card-header>
-      <mat-card-title>{{'income-and-expenses.new.add-income-and-expenses' | translate}}</mat-card-title>
+      <mat-card-title>{{'income-and-expenses.new.title' | translate}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field class="form__field">
@@ -25,7 +25,7 @@
         />
         <mat-error *ngIf="newForm.controls.amount.invalid && newForm.controls.amount.touched">
           <div *ngIf="newForm.controls.amount.errors.required">{{'form.error.required' | translate}}</div>
-          <div *ngIf="newForm.controls.amount.errors.min">{{'form.error.min' | translate: {value:'0'} }}</div>
+          <div *ngIf="newForm.controls.amount.errors.min">{{'form.error.min' | translate: {value:'1'} }}</div>
         </mat-error>
       </mat-form-field>
 
@@ -36,8 +36,9 @@
       </mat-radio-group>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit" [disabled]="newForm.invalid">{{'income-and-expenses.new.add' | translate}}</button>
-      <button mat-button>{{'income-and-expenses.new.cancel' | translate}}</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="newForm.invalid || (isLoading | async)">
+        {{ ((isLoading | async) ? 'generic.actions.loading' : 'income-and-expenses.new.add') | translate }}
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>

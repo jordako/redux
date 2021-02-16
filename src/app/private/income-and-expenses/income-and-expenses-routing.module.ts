@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { IncomeAndExpensesComponent } from './income-and-expenses.component';
 
 import {
   DashboardPage,
@@ -8,21 +9,25 @@ import {
 } from './pages';
 
 const routes: Routes = [{
-  path: 'dashboard',
-  component: DashboardPage,
-  data: { title: 'income-and-expenses.dashboard.title' },
-}, {
-  path: 'list',
-  component: ListPage,
-  data: { title: 'income-and-expenses.list.title' },
-}, {
-  path: 'new',
-  component: NewPage,
-  data: { title: 'income-and-expenses.new.title' },
-}, {
   path: '',
-  redirectTo: 'dashboard',
-  pathMatch: 'full',
+  component: IncomeAndExpensesComponent,
+  children: [{
+    path: 'dashboard',
+    component: DashboardPage,
+    data: { title: 'income-and-expenses.dashboard.title' },
+  }, {
+    path: 'list',
+    component: ListPage,
+    data: { title: 'income-and-expenses.list.title' },
+  }, {
+    path: 'new',
+    component: NewPage,
+    data: { title: 'income-and-expenses.new.title' },
+  }, {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  }],
 }];
 
 @NgModule({

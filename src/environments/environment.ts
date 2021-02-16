@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   defaultLanguage: 'es-ES',
   supportedLanguages: ['es-ES', 'en-GB'],
-  serverUrl: 'https://api.chucknorris.io', // TODO delete
+  serverUrl: '',
   firebase: {
     apiKey: 'AIzaSyC-FGVsEBRgKINmTWwega6nGg-Q43O-GA4',
     authDomain: 'redux-app-ac443.firebaseapp.com',

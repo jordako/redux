@@ -7,6 +7,7 @@ import { Observable, SubscriptionLike } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import * as authActions from '../store/auth.actions';
+import * as incomeAndExpensesActions from '../../../private/income-and-expenses/store/income-and-expenses.actions';
 
 import { UserModel } from '../../../shared/models';
 
@@ -16,6 +17,11 @@ import { UserModel } from '../../../shared/models';
 export class AuthService {
 
   userSubscription: SubscriptionLike;
+
+  private _user: UserModel;
+  get user(): UserModel {
+    return this._user;
+  }
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -28,24 +34,24 @@ export class AuthService {
   initAuthListener() {
     this.afAuth.authState.subscribe((firebaseUser: firebase.User) => {
       if (firebaseUser) {
-        this.userSubscription = this.firestore.doc(`${firebaseUser.uid}/user`).valueChanges()
-          .subscribe((firestoreUser: any) => {
-            const user = UserModel.fromFirestore(firestoreUser);
+        this.userSubscription = this.firestore.doc<UserModel>(`${firebaseUser.uid}/user`).valueChanges()
+          .subscribe(user => {
+            this._user = user;
             this.store.dispatch(authActions.setUser({ user }));
           });
       } else {
+        this._user = null;
         this.store.dispatch(authActions.unsetUser());
+        this.store.dispatch(incomeAndExpensesActions.unSetItems());
         if (this.userSubscription) { this.userSubscription.unsubscribe(); }
       }
     });
   }
 
-  createUser(name: string, email: string, password: string): Promise<void | firebase.auth.UserCredential> {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(({ user }) => {
-        const newUser = new UserModel( user.uid, user.email, name );
-        return this.firestore.doc(`${ user.uid }/user`).set({ ...newUser });
-      });
+  async createUser(name: string, email: string, password: string): Promise<void> {
+    const { user } = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+    const newUser = new UserModel(user.uid, user.email, name);
+    return await this.firestore.doc<UserModel>(`${user.uid}/user`).set({ ...newUser });
   }
 
   login(email: string, password: string): Promise<firebase.auth.UserCredential> {

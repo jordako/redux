@@ -1,3 +1,39 @@
 .app-incoming-and-expenses-dashboard {
-  display: block;
+  display: flex;
+  padding: 1rem;
+  max-width: 1200px;
+
+  .dashboard {
+    &-card {
+      margin: 12px;
+      flex: 1;
+    }
+
+    &-amount-title {
+      font-weight: normal;
+      font-size: 14px;
+      text-align: right;
+      margin: 0;
+    }
+    &-amount {
+      font-size: 24px;
+      text-align: right;
+      margin: 0 0 8px 0;
+      &--income {
+        color: #28a745;
+      }
+      &--expense {
+        color: #dc3545;
+      }
+      &--balance {
+        font-size: 32px;
+      }
+    }
+    &-items {
+      font-size: 12px;
+      text-align: right;
+      margin: 0;
+      color: #ccc;
+    }
+  }
 }

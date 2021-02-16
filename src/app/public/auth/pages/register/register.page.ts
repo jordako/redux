@@ -27,7 +27,7 @@ export class RegisterPage implements OnInit {
   get isLoading(): Observable<boolean> {
     return this.store.select('ui')
       .pipe(
-        map((state: State) => state.isLoading),
+        map(({ isLoading }) => isLoading),
       );
   }
 

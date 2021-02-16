@@ -1,2 +1,30 @@
-<h1>Dashboard</h1>
-<p>TODO</p>
+<mat-card class="dashboard-card dashboard-card--incomes">
+  <h3 class="dashboard-amount-title">{{'income-and-expenses.dashboard.incomes' | translate}}</h3>
+  <p class="dashboard-amount dashboard-amount--income">{{ (incomeAndExpensesTotals$ | async).totalIncomes | currency }}</p>
+  <p class="dashboard-items">{{'income-and-expenses.dashboard.items' | translate: {value:(incomeAndExpensesTotals$ | async).incomes} }}</p>
+</mat-card>
+
+<mat-card class="dashboard-card dashboard-card--expenses">
+  <h3 class="dashboard-amount-title">{{'income-and-expenses.dashboard.expenses' | translate}}</h3>
+  <p class="dashboard-amount dashboard-amount--expense">{{ (incomeAndExpensesTotals$ | async).totalExpenses | currency }}</p>
+  <p class="dashboard-items">{{'income-and-expenses.dashboard.items' | translate: {value:(incomeAndExpensesTotals$ | async).expenses} }}</p>
+</mat-card>
+
+<mat-card class="dashboard-card dashboard-card--balance">
+  <h3 class="dashboard-amount-title dashboard-amount-title--balance">{{'income-and-expenses.dashboard.balance' | translate}}</h3>
+  <p class="dashboard-amount dashboard-amount--balance"
+    [class.dashboard-amount--income]="(incomeAndExpensesTotals$ | async).balance >= 0"
+    [class.dashboard-amount--expense]="(incomeAndExpensesTotals$ | async).balance < 0">
+    {{ (incomeAndExpensesTotals$ | async).balance | currency }}
+  </p>
+</mat-card>
+
+<mat-card>
+  <div style="display: block">
+    <canvas baseChart
+      [data]="doughnutChartData$ | async"
+      [labels]="doughnutChartLabels"
+      chartType="doughnut">
+    </canvas>
+  </div>
+</mat-card>

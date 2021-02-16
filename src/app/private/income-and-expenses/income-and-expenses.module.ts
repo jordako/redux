@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { IncomeAndExpensesRoutingModule } from './income-and-expenses-routing.module';
+import { IncomeAndExpensesComponent } from './income-and-expenses.component';
 import { IncomeAndExpensesService } from './services/income-and-expenses.service';
 
 // Components
@@ -12,6 +13,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { ChartsModule, ThemeService } from 'ng2-charts';
 
 // Pages
 import {
@@ -28,6 +32,7 @@ const PAGES = [
 
 @NgModule({
   declarations: [
+    IncomeAndExpensesComponent,
     PAGES,
   ],
   imports: [
@@ -41,12 +46,16 @@ const PAGES = [
     MatInputModule,
     MatButtonModule,
     MatRadioModule,
+    MatTableModule,
+    MatIconModule,
+    ChartsModule,
   ],
   exports: [
     PAGES,
   ],
   providers: [
     IncomeAndExpensesService,
+    ThemeService,
   ],
 })
 export class IncomeAndExpensesModule { }

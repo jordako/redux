@@ -31,7 +31,7 @@
   </mat-menu>
 
   <button mat-button [matMenuTriggerFor]="userMenu">
-    <mat-icon>person</mat-icon>{{ username }}
+    <mat-icon>person</mat-icon>{{ username | async }}
   </button>
   <mat-menu #userMenu="matMenu">
     <button mat-menu-item (click)="logout()">
