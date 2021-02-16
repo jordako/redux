@@ -1,4 +1,4 @@
-import { QueryDocumentSnapshot } from "@angular/fire/firestore";
+import { QueryDocumentSnapshot } from '@angular/fire/firestore';
 
 export type IncomeAndExpenseType = 'income' | 'expense';
 
