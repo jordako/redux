@@ -12,10 +12,11 @@ const routes: Routes = [{
   path: '',
   loadChildren: () => import('./public/public.module').then(m => m.PublicModule),
   canActivate: [ NoAuthGuard ],
-}, /*, { TODO crear componente de página no encontrada
+}, {
   path: '**',
-  component: NotFoundPage,
-}*/];
+  redirectTo: '',
+  pathMatch: 'full',
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
