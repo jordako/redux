@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
+import { AppStateWithIncomeAndExpenses } from '../../store/income-and-expenses.reducer';
 
 import { IncomeAndExpenseModel } from 'src/app/shared/models';
 import { IncomeAndExpensesService } from '../../services/income-and-expenses.service';
@@ -26,7 +26,7 @@ export class ListPage implements OnInit {
   dataSource: MatTableDataSource<IncomeAndExpenseModel>;
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<AppStateWithIncomeAndExpenses>,
     private incomeAndExpensesService: IncomeAndExpensesService,
     private snackBar: MatSnackBar,
     private translate: TranslateService,

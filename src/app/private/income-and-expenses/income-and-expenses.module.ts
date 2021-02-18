@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { StoreModule } from '@ngrx/store';
+import { incomeAndExpensesReducer } from './store/income-and-expenses.reducer';
+
 import { IncomeAndExpensesRoutingModule } from './income-and-expenses-routing.module';
 import { IncomeAndExpensesComponent } from './income-and-expenses.component';
 import { IncomeAndExpensesService } from './services/income-and-expenses.service';
@@ -37,6 +40,7 @@ const PAGES = [
   ],
   imports: [
     CommonModule,
+    StoreModule.forFeature('incomeAndExpenses', incomeAndExpensesReducer),
     TranslateModule,
     ReactiveFormsModule,
     IncomeAndExpensesRoutingModule,

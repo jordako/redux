@@ -1,10 +1,10 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 
-import { AppState } from '../../../../app.reducer';
+import { Store } from '@ngrx/store';
+import { AppStateWithIncomeAndExpenses } from '../../store/income-and-expenses.reducer';
 
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { MultiDataSet, Label } from 'ng2-charts';
@@ -41,7 +41,7 @@ export class DashboardPage implements OnInit {
   }
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<AppStateWithIncomeAndExpenses>,
     private translate: TranslateService,
   ) {}
 
