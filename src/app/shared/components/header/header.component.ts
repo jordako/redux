@@ -80,10 +80,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    // TODO start loading
     this.authService.logout()
       .then( () => {
-        // TODO stop loading
         this.router.navigate(['/auth/login']);
       })
       .catch(error => {

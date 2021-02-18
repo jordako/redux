@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-// import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Components
@@ -24,7 +23,6 @@ export { HeaderComponent } from './header.component';
     CommonModule,
     TranslateModule,
     FlexLayoutModule,
-    // AngularFireAuthModule,
     RouterModule,
     // Components
     MatToolbarModule,
