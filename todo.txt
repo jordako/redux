@@ -1,0 +1,8 @@
+Crear el auth.component con el router-outlet igual que has hecho en el income-and-expenses
+Mira donde es mejor colocar el initAuthListener, mira donde lo tiene puesto el pleca pleca y si es un mejor sitio lo cambias. Tb mira si es necesario que authService sea root
+Mira si es necesario tener el get user() en el authService y sino sería mejor que el que lo necesito lo consulte del store (que pa eso está…)
+Cargar el locale en función del idioma, formato currency, fechas, etc
+Añadir campo fecha a los elementos y ordenarlo por este campo
+Maquetarlo todo bien y sin utilizar el paquete de flex (FlexLayoutModule)
+Crear componente de página no encontrada
+Hacer loading general
