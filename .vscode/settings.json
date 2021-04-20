@@ -901,7 +901,7 @@
   "emmet.excludeLanguages": ["markdown"],
 
   // Path to a folder containing emmet profiles and snippets.'
-  "emmet.extensionsPath": null,
+  "emmet.extensionsPath": [],
 
   // When enabled, emmet abbreviations are expanded when pressing TAB.
   "emmet.triggerExpansionOnTab": false,
